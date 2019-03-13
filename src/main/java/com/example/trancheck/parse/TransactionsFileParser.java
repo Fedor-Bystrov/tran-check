@@ -1,6 +1,8 @@
 package com.example.trancheck.parse;
 
 import com.example.trancheck.exception.EmptyFileException;
+import com.example.trancheck.parse.pojo.ParseLineResult;
+import com.example.trancheck.parse.pojo.ParseResult;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.example.trancheck.parse;
+package com.example.trancheck.parse.pojo;
 
 import java.util.Objects;
 
