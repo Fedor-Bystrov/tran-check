@@ -2,6 +2,10 @@ package com.example.trancheck.parse;
 
 import java.util.Objects;
 
+/**
+ * ParseLineResult - результат успешно распознанной
+ * строки в csv файле с транзакциями
+ */
 public class ParseLineResult {
   private String id;
   private String amount;
