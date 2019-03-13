@@ -1,7 +1,5 @@
 package com.example.trancheck.parse.pojo;
 
-import com.example.trancheck.parse.pojo.ParseLineResult;
-
 import java.util.ArrayList;
 import java.util.List;
 
