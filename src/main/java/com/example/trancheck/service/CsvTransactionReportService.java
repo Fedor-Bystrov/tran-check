@@ -22,6 +22,7 @@ public class CsvTransactionReportService {
     // TODO 3. Генерить репорт (учесть "форматов отчёта может быть несколько (реализовать нужно только один)")
     // TODO 4. Собрать jarник, подтюнить pom
     // TODO 5. Юнит тесты
+    // TODO 6. Readme
     System.out.println(parseResult.getRowsAmount());
   }
 }
