@@ -10,8 +10,10 @@ public class ParseLineResult {
   private String id;
   private String amount;
   private String data;
+  private long lineNumber;
 
-  public ParseLineResult(String id, String amount, String data) {
+  public ParseLineResult(long lineNumber, String id, String amount, String data) {
+    this.lineNumber = lineNumber;
     this.id = id;
     this.amount = amount;
     this.data = data;
@@ -27,6 +29,10 @@ public class ParseLineResult {
 
   public String getData() {
     return data;
+  }
+
+  public long getLineNumber() {
+    return lineNumber;
   }
 
   @Override
