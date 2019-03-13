@@ -20,7 +20,14 @@ public class TransactionsFileParser {
   private static final Pattern TOTAL_PATTERN = Pattern.compile("^TOTAL;(\\d+);?$");
 
   /**
-   * Метод для парсинга csv файла с тразакциями
+   * Метод для парсинга csv файла с транзакциями в формате:
+   * <br/>
+   * PID;PAMOUNT;PDATA;
+   * <br/>
+   * 123;94.7;20160101120000;
+   * <br/>
+   * TOTAL;1;
+   * <br/>
    *
    * @param pathToFile путь до файла
    * @return результат парсинга
@@ -57,8 +64,7 @@ public class TransactionsFileParser {
             dataPatternMatcher.group(2),
             dataPatternMatcher.group(3))
           );
-        }
-        else if (totalPatternMatcher.matches()) {
+        } else if (totalPatternMatcher.matches()) {
           // Нашли TOTAL;... Парсим общее количество транзакций в файле
           parseResult.setRowsAmount(Long.valueOf(totalPatternMatcher.group(1)));
         } else {
