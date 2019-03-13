@@ -20,6 +20,8 @@ public class CsvTransactionReportService {
     // TODO 1. Подтягиваем все транзакции из базы
     // TODO 2. Сматчить успешные строки в parseResult с транзакциями из базы (список правил)
     // TODO 3. Генерить репорт (учесть "форматов отчёта может быть несколько (реализовать нужно только один)")
+    // TODO 4. Собрать jarник, подтюнить pom
+    // TODO 5. Юнит тесты
     System.out.println(parseResult.getRowsAmount());
   }
 }
