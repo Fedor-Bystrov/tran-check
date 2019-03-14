@@ -10,16 +10,14 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.regex.Pattern;
+
+import static com.example.trancheck.parse.ParsePatterns.DATA_PATTERN;
+import static com.example.trancheck.parse.ParsePatterns.HEADERS_PATTERN;
+import static com.example.trancheck.parse.ParsePatterns.TOTAL_PATTERN;
 
 @Component
 public class TransactionsFileParser {
   private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(TransactionsFileParser.class);
-
-  private static final Pattern HEADERS_PATTERN = Pattern.compile("^PID;PAMOUNT;PDATA;$");
-  // Считаем что отрицательных amount нет
-  private static final Pattern DATA_PATTERN = Pattern.compile("^(\\d+);(\\d+\\.\\d+);(.*);$");
-  private static final Pattern TOTAL_PATTERN = Pattern.compile("^TOTAL;(\\d+);$");
 
   /**
    * Метод для парсинга csv файла с транзакциями в формате:
