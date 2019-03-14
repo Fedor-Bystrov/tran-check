@@ -12,9 +12,8 @@ import java.nio.file.Path;
 public class SimpleCSVReportProducer implements ReportProducer {
   private static final Logger LOGGER = LoggerFactory.getLogger(SimpleCSVReportProducer.class);
 
-
   @Override
   public void produce(ParseResult parseResult, TransactionsValidationReport report, Path path) {
-
+    LOGGER.info("Creating report file at {}", path);
   }
 }

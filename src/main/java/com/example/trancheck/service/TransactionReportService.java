@@ -51,7 +51,7 @@ public class TransactionReportService {
    * @throws IOException
    */
   public void processCsv(Path pathToFile) throws IOException {
-    LOGGER.info("Processing csv file");
+    LOGGER.info("Processing csv file {}", pathToFile.toAbsolutePath().normalize());
 
     // 1. Парсим csv файл с транзакциями
     final var parseResult = fileParser.parse(pathToFile);
@@ -70,6 +70,7 @@ public class TransactionReportService {
     final var validationReport = csvTransactionsValidator.check(parseResult.getParseLineResults(), transactions);
 
     // 5. Создаем отчет
-    reportGenerator.writeToFile(parseResult, validationReport, pathToFile, SIMPLE_CSV_REPORT);
+    final var reportFilePath = pathToFile.getParent().toAbsolutePath().normalize();
+    reportGenerator.writeToFile(parseResult, validationReport, reportFilePath, SIMPLE_CSV_REPORT);
   }
 }

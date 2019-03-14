@@ -36,7 +36,7 @@ public class TransactionsFileParser {
    * @throws IOException
    */
   public ParseResult parse(Path pathToFile) throws IOException {
-    LOGGER.info("Parsing transactions in {}", pathToFile);
+    LOGGER.info("Parsing transactions");
     final var parseResult = new ParseResult();
     try (final var reader = Files.newBufferedReader(pathToFile, Charset.defaultCharset())) {
       long lineNumber = 1;

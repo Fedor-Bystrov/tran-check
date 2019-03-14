@@ -27,7 +27,7 @@ public class CsvTransactionsValidator {
    * @return Отчет о валидации
    */
   public TransactionsValidationReport check(Collection<ParseLineResult> parseLineResults, Set<Transaction> transactions) {
-    LOGGER.info("Validation transactions");
+    LOGGER.info("Validating transactions");
 
     final var validationReport = new TransactionsValidationReport();
     for (var csvTransaction : parseLineResults) {
