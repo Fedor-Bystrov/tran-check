@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class CsvTransactionValidator {
+public class CsvTransactionsValidator {
 
   /**
    * Метод для получения отчена о сверке транзакций из файла с транзакциями в базе
