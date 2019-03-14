@@ -21,7 +21,7 @@ public class ParseResult {
   /**
    * Список успешно распознанных строк
    */
-  private List<ParseLineResult> parseResults;
+  private List<ParseLineResult> parseLineResults;
 
   /**
    * Номера строк которые не удалось распознать
@@ -29,16 +29,16 @@ public class ParseResult {
   private List<Long> unparsedLines;
 
   public ParseResult() {
-    parseResults = new ArrayList<>();
+    parseLineResults = new ArrayList<>();
     unparsedLines = new ArrayList<>();
   }
 
   public void addParseLineResult(ParseLineResult parseResult) {
-    parseResults.add(parseResult);
+    parseLineResults.add(parseResult);
   }
 
-  public List<ParseLineResult> getParseResults() {
-    return parseResults;
+  public List<ParseLineResult> getParseLineResults() {
+    return parseLineResults;
   }
 
   public void addUnparsedLine(long lineNumber) {
