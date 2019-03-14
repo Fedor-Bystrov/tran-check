@@ -2,7 +2,7 @@ package com.example.trancheck.controller;
 
 import com.example.trancheck.exception.EmptyFileException;
 import com.example.trancheck.exception.UndefinedCsvFilePropException;
-import com.example.trancheck.service.CsvTransactionReportService;
+import com.example.trancheck.service.TransactionReportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,9 +18,9 @@ import java.util.Properties;
 public class CsvTransactionController {
   private static final Logger LOGGER = LoggerFactory.getLogger(CsvTransactionController.class);
 
-  private final CsvTransactionReportService reportService;
+  private final TransactionReportService reportService;
 
-  public CsvTransactionController(CsvTransactionReportService reportService) {
+  public CsvTransactionController(TransactionReportService reportService) {
     this.reportService = reportService;
   }
 
@@ -35,7 +35,7 @@ public class CsvTransactionController {
         throw new UndefinedCsvFilePropException();
       }
 
-      reportService.execute(Path.of(csvFileProp));
+      reportService.processCsv(Path.of(csvFileProp));
     } catch (NoSuchFileException e) {
       LOGGER.error(String.format("File %s not found", e.getMessage()));
     } catch (EmptyFileException | UndefinedCsvFilePropException e) {

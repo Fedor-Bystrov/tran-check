@@ -14,17 +14,20 @@ import java.util.stream.Collectors;
 
 import static com.example.trancheck.report.ReportFormat.SIMPLE_CSV_REPORT;
 
+/**
+ * Сервис сверки транзакций полученных из вне с транзакциями в базе
+ */
 @Service
-public class CsvTransactionReportService {
+public class TransactionReportService {
 
   private final TransactionsFileParser fileParser;
   private final TransactionRepository transactionRepository;
   private final CsvTransactionsValidator csvTransactionsValidator;
   private final ReportGenerator reportGenerator;
 
-  public CsvTransactionReportService(TransactionsFileParser fileParser, TransactionRepository transactionRepository,
-                                     CsvTransactionsValidator csvTransactionsValidator,
-                                     ReportGenerator reportGenerator) {
+  public TransactionReportService(TransactionsFileParser fileParser, TransactionRepository transactionRepository,
+                                  CsvTransactionsValidator csvTransactionsValidator,
+                                  ReportGenerator reportGenerator) {
     this.fileParser = fileParser;
     this.transactionRepository = transactionRepository;
     this.csvTransactionsValidator = csvTransactionsValidator;
@@ -32,14 +35,19 @@ public class CsvTransactionReportService {
   }
 
   // TODO:
-  //  1. Подтягиваем все транзакции из базы
-  //  2. Сматчить успешные строки в parseResult с транзакциями из базы (список правил)
-  //  3. Генерить репорт (учесть "форматов отчёта может быть несколько (реализовать нужно только один)")
-  //  4. Собрать jarник, подтюнить pom
-  //  5. Юнит тесты
-  //  6. Readme
+  //  1. Генерить репорт (учесть "форматов отчёта может быть несколько (реализовать нужно только один)")
+  //  2. Собрать jarник, подтюнить pom
+  //  3. Юнит тесты
+  //  4. Readme
 
-  public void execute(Path pathToFile) throws IOException {
+  /**
+   * Метод для сверки транзакций из CSV файла с транзакциями в базе.
+   * По окончанию, создает файл с результатом сверки
+   *
+   * @param pathToFile путь до csv файла с транзакциями
+   * @throws IOException
+   */
+  public void processCsv(Path pathToFile) throws IOException {
     // 1. Парсим csv файл с транзакциями
     final var parseResult = fileParser.parse(pathToFile);
 
