@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,6 +24,7 @@ import static com.example.trancheck.report.ReportFormat.SIMPLE_CSV_REPORT;
 @Service
 public class TransactionReportService {
   private static final Logger LOGGER = LoggerFactory.getLogger(TransactionReportService.class);
+  private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern( "yyyy-MM-dd_HH:mm:ss");
 
   private final TransactionsFileParser fileParser;
   private final TransactionRepository transactionRepository;
@@ -70,7 +73,14 @@ public class TransactionReportService {
     final var validationReport = csvTransactionsValidator.check(parseResult.getParseLineResults(), transactions);
 
     // 5. Создаем отчет
-    final var reportFilePath = pathToFile.getParent().toAbsolutePath().normalize();
-    reportGenerator.writeToFile(parseResult, validationReport, reportFilePath, SIMPLE_CSV_REPORT);
+    reportGenerator.writeToFile(parseResult, validationReport, getReportFilePath(pathToFile), SIMPLE_CSV_REPORT);
+  }
+
+  private Path getReportFilePath(Path pathToCsv) {
+    final var newFileName = String.format("report#%s.csv", FORMATTER.format(LocalDateTime.now()));
+    return pathToCsv.getParent()
+      .toAbsolutePath()
+      .normalize()
+      .resolve(newFileName);
   }
 }
