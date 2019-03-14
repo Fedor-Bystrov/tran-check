@@ -24,6 +24,10 @@ public class CsvTransactionController {
     this.reportService = reportService;
   }
 
+  /**
+  /**
+   * Контроллер, осуществляющий сверку транзакций из файла с транзакциями в базе
+   */
   public void checkTransactions() {
     LOGGER.info("Transaction check initialized");
     try {
