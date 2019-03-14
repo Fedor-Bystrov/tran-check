@@ -4,6 +4,8 @@ import com.example.trancheck.parse.TransactionsFileParser;
 import com.example.trancheck.parse.pojo.ParseLineResult;
 import com.example.trancheck.report.ReportGenerator;
 import com.example.trancheck.repository.TransactionRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -19,6 +21,7 @@ import static com.example.trancheck.report.ReportFormat.SIMPLE_CSV_REPORT;
  */
 @Service
 public class TransactionReportService {
+  private static final Logger LOGGER = LoggerFactory.getLogger(TransactionReportService.class);
 
   private final TransactionsFileParser fileParser;
   private final TransactionRepository transactionRepository;
@@ -48,6 +51,8 @@ public class TransactionReportService {
    * @throws IOException
    */
   public void processCsv(Path pathToFile) throws IOException {
+    LOGGER.info("Processing csv file");
+
     // 1. Парсим csv файл с транзакциями
     final var parseResult = fileParser.parse(pathToFile);
 

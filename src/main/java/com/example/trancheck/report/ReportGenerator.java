@@ -5,6 +5,8 @@ import com.example.trancheck.exception.UnsupportedFormatException;
 import com.example.trancheck.parse.pojo.ParseResult;
 import com.example.trancheck.report.pojo.TransactionsValidationReport;
 import com.example.trancheck.report.producer.SimpleCSVReportProducer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
@@ -15,6 +17,7 @@ import java.nio.file.Path;
  */
 @Component
 public class ReportGenerator {
+  private static final Logger LOGGER = LoggerFactory.getLogger(ReportGenerator.class);
 
   private final SimpleCSVReportProducer simpleCSVReportProducer;
 
@@ -34,6 +37,7 @@ public class ReportGenerator {
                           Path path, ReportFormat reportFormat) {
     switch (reportFormat) {
       case SIMPLE_CSV_REPORT:
+        LOGGER.info("Producing report with format = {}", reportFormat);
         simpleCSVReportProducer.produce(parseResult, report, path);
         break;
       default:

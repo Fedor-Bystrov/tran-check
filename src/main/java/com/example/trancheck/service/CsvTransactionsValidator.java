@@ -3,6 +3,8 @@ package com.example.trancheck.service;
 import com.example.trancheck.entity.Transaction;
 import com.example.trancheck.parse.pojo.ParseLineResult;
 import com.example.trancheck.report.pojo.TransactionsValidationReport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,6 +16,7 @@ import java.util.Set;
 
 @Service
 public class CsvTransactionsValidator {
+  private static final Logger LOGGER = LoggerFactory.getLogger(CsvTransactionsValidator.class);
 
   /**
    * Метод для получения отчена о сверке транзакций из файла с транзакциями в базе
@@ -24,8 +27,9 @@ public class CsvTransactionsValidator {
    * @return Отчет о валидации
    */
   public TransactionsValidationReport check(Collection<ParseLineResult> parseLineResults, Set<Transaction> transactions) {
-    final var validationReport = new TransactionsValidationReport();
+    LOGGER.info("Validation transactions");
 
+    final var validationReport = new TransactionsValidationReport();
     for (var csvTransaction : parseLineResults) {
       // 1. Проверяем, есть ли транзакция из файла в базе
       final Optional<Transaction> txOptional = transactions.stream()
