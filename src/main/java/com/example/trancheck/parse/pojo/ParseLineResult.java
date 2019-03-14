@@ -1,5 +1,6 @@
 package com.example.trancheck.parse.pojo;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -7,23 +8,23 @@ import java.util.Objects;
  * строки в csv файле с транзакциями
  */
 public class ParseLineResult {
-  private String id;
-  private String amount;
+  private int id;
+  private BigDecimal amount;
   private String data;
   private long lineNumber;
 
-  public ParseLineResult(long lineNumber, String id, String amount, String data) {
+  public ParseLineResult(long lineNumber, int id, String amount, String data) {
     this.lineNumber = lineNumber;
     this.id = id;
-    this.amount = amount;
+    this.amount = new BigDecimal(amount);
     this.data = data;
   }
 
-  public String getId() {
+  public int getId() {
     return id;
   }
 
-  public String getAmount() {
+  public BigDecimal getAmount() {
     return amount;
   }
 
