@@ -25,7 +25,6 @@ public class CsvTransactionController {
   }
 
   /**
-  /**
    * Контроллер, осуществляющий сверку транзакций из файла с транзакциями в базе
    */
   public void checkTransactions() {
