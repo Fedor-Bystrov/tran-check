@@ -2,7 +2,7 @@ package com.example.trancheck.service;
 
 import com.example.trancheck.entity.Transaction;
 import com.example.trancheck.parse.pojo.ParseLineResult;
-import com.example.trancheck.report.pojo.TransactionValidationReport;
+import com.example.trancheck.report.pojo.TransactionsValidationReport;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -23,8 +23,8 @@ public class CsvTransactionValidator {
    *                         либо пустой список если таких транзакций нет
    * @return Отчет о валидации
    */
-  public TransactionValidationReport check(Collection<ParseLineResult> parseLineResults, Set<Transaction> transactions) {
-    final var validationReport = new TransactionValidationReport();
+  public TransactionsValidationReport check(Collection<ParseLineResult> parseLineResults, Set<Transaction> transactions) {
+    final var validationReport = new TransactionsValidationReport();
 
     for (var csvTransaction : parseLineResults) {
       // 1. Проверяем, есть ли транзакция из файла в базе

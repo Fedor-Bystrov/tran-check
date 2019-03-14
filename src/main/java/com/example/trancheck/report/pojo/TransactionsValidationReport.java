@@ -5,13 +5,13 @@ import com.example.trancheck.parse.pojo.ParseLineResult;
 import java.util.HashMap;
 
 /**
- * TransactionValidationReport хранит в себе информацию
+ * TransactionsValidationReport хранит в себе информацию
  * о валидации успешно прочитаных транзакций из файла.
  */
-public class TransactionValidationReport {
+public class TransactionsValidationReport {
   private final HashMap<ParseLineResult, String> reportEntries;
 
-  public TransactionValidationReport() {
+  public TransactionsValidationReport() {
     this.reportEntries = new HashMap<>();
   }
 
