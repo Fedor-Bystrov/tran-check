@@ -62,7 +62,7 @@ public class TransactionsFileParser {
           // Записываем валидную транзакцию
           parseResult.addParseLineResult(new ParseLineResult(
             lineNumber,
-            dataPatternMatcher.group(1),
+            Integer.valueOf(dataPatternMatcher.group(1)),
             dataPatternMatcher.group(2),
             dataPatternMatcher.group(3))
           );
