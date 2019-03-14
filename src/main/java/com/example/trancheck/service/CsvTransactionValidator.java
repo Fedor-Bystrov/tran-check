@@ -1,9 +1,9 @@
-package com.example.trancheck.report;
+package com.example.trancheck.service;
 
 import com.example.trancheck.entity.Transaction;
 import com.example.trancheck.parse.pojo.ParseLineResult;
 import com.example.trancheck.report.pojo.TransactionValidationReport;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-@Component
+@Service
 public class CsvTransactionValidator {
 
   /**
