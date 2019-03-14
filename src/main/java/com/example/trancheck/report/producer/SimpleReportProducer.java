@@ -28,7 +28,11 @@ public class SimpleReportProducer implements ReportProducer {
       for (var reportEntry : report.getReportEntries().entrySet()) {
         writeLine(writer, reportEntry.getKey(), reportEntry.getValue());
       }
+
       writer.write("MALFORMED;\n");
+      for (var line : parseResult.getUnparsedLines()) {
+        writer.write(line);
+      }
     } catch (FileAlreadyExistsException x) {
       LOGGER.error("File {} already exists", path);
     } catch (IOException e) {

@@ -24,9 +24,9 @@ public class ParseResult {
   private List<ParseLineResult> parseLineResults;
 
   /**
-   * Номера строк которые не удалось распознать
+   * Строки которые не удалось распознать
    */
-  private List<Long> unparsedLines;
+  private List<String> unparsedLines;
 
   public ParseResult() {
     parseLineResults = new ArrayList<>();
@@ -41,11 +41,11 @@ public class ParseResult {
     return parseLineResults;
   }
 
-  public void addUnparsedLine(long lineNumber) {
-    unparsedLines.add(lineNumber);
+  public void addUnparsedLine(String line) {
+    unparsedLines.add(line);
   }
 
-  public List<Long> getUnparsedLines() {
+  public List<String> getUnparsedLines() {
     return unparsedLines;
   }
 

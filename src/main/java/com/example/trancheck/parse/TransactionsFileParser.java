@@ -69,7 +69,7 @@ public class TransactionsFileParser {
           parseResult.setRowsAmount(Long.valueOf(totalPatternMatcher.group(1)));
         } else {
           // Не смогли распознать строку
-          parseResult.addUnparsedLine(lineNumber);
+          parseResult.addUnparsedLine(line);
         }
         lineNumber++;
       }
