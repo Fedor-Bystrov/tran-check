@@ -77,7 +77,7 @@ public class TransactionReportService {
   }
 
   private Path getReportFilePath(Path pathToCsv) {
-    final var newFileName = String.format("report#%s", FORMATTER.format(LocalDateTime.now()));
+    final var newFileName = String.format("report#%s.csv", FORMATTER.format(LocalDateTime.now()));
     return pathToCsv.getParent()
       .toAbsolutePath()
       .normalize()

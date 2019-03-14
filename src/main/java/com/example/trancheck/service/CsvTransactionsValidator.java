@@ -37,7 +37,7 @@ public class CsvTransactionsValidator {
         .findAny();
 
       if (txOptional.isEmpty()) {
-        validationReport.addEntry(csvTransaction, "Транзакция с таким ID не найдена в базе.");
+        validationReport.addEntry(csvTransaction, "Transaction was not found in DB");
         continue;
       }
 
@@ -45,9 +45,9 @@ public class CsvTransactionsValidator {
       // В базе amount транзакции имеет два знака после зпт, приводим amount транзакции из csv к такому же виду
       final BigDecimal csvTxAmount = csvTransaction.getAmount().setScale(2, RoundingMode.HALF_DOWN);
       if (Objects.equals(csvTxAmount, txOptional.get().getAmount())) {
-        validationReport.addEntry(csvTransaction, "Транзакция подтверждена.");
+        validationReport.addEntry(csvTransaction, "Transaction approved");
       } else {
-        validationReport.addEntry(csvTransaction, "Значение в поле amount не совпадает с транзакцией в базе.");
+        validationReport.addEntry(csvTransaction, "Wrong transaction amount");
       }
     }
 
