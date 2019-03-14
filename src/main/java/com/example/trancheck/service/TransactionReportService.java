@@ -24,7 +24,7 @@ import static com.example.trancheck.report.ReportFormat.SIMPLE_REPORT;
 @Service
 public class TransactionReportService {
   private static final Logger LOGGER = LoggerFactory.getLogger(TransactionReportService.class);
-  private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern( "yyyy-MM-dd_HH:mm:ss");
+  private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss");
 
   private final TransactionsFileParser fileParser;
   private final TransactionRepository transactionRepository;
@@ -39,12 +39,6 @@ public class TransactionReportService {
     this.csvTransactionsValidator = csvTransactionsValidator;
     this.reportGenerator = reportGenerator;
   }
-
-  // TODO:
-  //  1. Генерить репорт (учесть "форматов отчёта может быть несколько (реализовать нужно только один)")
-  //  2. Собрать jarник, подтюнить pom
-  //  3. Юнит тесты
-  //  4. Readme
 
   /**
    * Метод для сверки транзакций из CSV файла с транзакциями в базе.
