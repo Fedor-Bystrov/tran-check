@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.example.trancheck.report.ReportFormat.SIMPLE_CSV_REPORT;
+import static com.example.trancheck.report.ReportFormat.SIMPLE_REPORT;
 
 /**
  * Сервис сверки транзакций полученных из вне с транзакциями в базе
@@ -73,11 +73,11 @@ public class TransactionReportService {
     final var validationReport = csvTransactionsValidator.check(parseResult.getParseLineResults(), transactions);
 
     // 5. Создаем отчет
-    reportGenerator.writeToFile(parseResult, validationReport, getReportFilePath(pathToFile), SIMPLE_CSV_REPORT);
+    reportGenerator.writeToFile(parseResult, validationReport, getReportFilePath(pathToFile), SIMPLE_REPORT);
   }
 
   private Path getReportFilePath(Path pathToCsv) {
-    final var newFileName = String.format("report#%s.csv", FORMATTER.format(LocalDateTime.now()));
+    final var newFileName = String.format("report#%s", FORMATTER.format(LocalDateTime.now()));
     return pathToCsv.getParent()
       .toAbsolutePath()
       .normalize()

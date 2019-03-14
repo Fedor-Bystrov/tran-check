@@ -5,5 +5,5 @@ package com.example.trancheck.report;
  * см. {@link ReportGenerator}
  */
 public enum ReportFormat {
-  SIMPLE_CSV_REPORT,
+  SIMPLE_REPORT,
 }

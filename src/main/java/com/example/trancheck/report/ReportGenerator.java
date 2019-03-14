@@ -4,7 +4,7 @@ package com.example.trancheck.report;
 import com.example.trancheck.exception.UnsupportedFormatException;
 import com.example.trancheck.parse.pojo.ParseResult;
 import com.example.trancheck.report.pojo.TransactionsValidationReport;
-import com.example.trancheck.report.producer.SimpleCSVReportProducer;
+import com.example.trancheck.report.producer.SimpleReportProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,10 +19,10 @@ import java.nio.file.Path;
 public class ReportGenerator {
   private static final Logger LOGGER = LoggerFactory.getLogger(ReportGenerator.class);
 
-  private final SimpleCSVReportProducer simpleCSVReportProducer;
+  private final SimpleReportProducer simpleReportProducer;
 
-  public ReportGenerator(SimpleCSVReportProducer simpleCSVReportProducer) {
-    this.simpleCSVReportProducer = simpleCSVReportProducer;
+  public ReportGenerator(SimpleReportProducer simpleReportProducer) {
+    this.simpleReportProducer = simpleReportProducer;
   }
 
   /**
@@ -36,9 +36,9 @@ public class ReportGenerator {
   public void writeToFile(ParseResult parseResult, TransactionsValidationReport report,
                           Path path, ReportFormat reportFormat) {
     switch (reportFormat) {
-      case SIMPLE_CSV_REPORT:
+      case SIMPLE_REPORT:
         LOGGER.info("Producing report with format = {}", reportFormat);
-        simpleCSVReportProducer.produce(parseResult, report, path);
+        simpleReportProducer.produce(parseResult, report, path);
         break;
       default:
         throw new UnsupportedFormatException();
