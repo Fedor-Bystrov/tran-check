@@ -39,6 +39,7 @@ public class TransactionsFileParser {
     try (final var reader = Files.newBufferedReader(pathToFile, Charset.defaultCharset())) {
       long lineNumber = 1;
       String line = reader.readLine();
+      reader.mark(0);
 
       if (line == null) {
         throw new EmptyFileException();
@@ -49,6 +50,9 @@ public class TransactionsFileParser {
       if (headersPatternMatcher.matches()) {
         parseResult.setHeadersOk(true);
         lineNumber++;
+      } else  {
+        parseResult.addUnparsedLine(line);
+        reader.reset();
       }
 
       // Парсим остальные строки

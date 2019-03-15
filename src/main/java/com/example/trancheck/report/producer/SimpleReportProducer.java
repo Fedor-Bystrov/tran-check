@@ -58,7 +58,7 @@ public class SimpleReportProducer implements ReportProducer {
       // 2. Записываем те что распознать не удалось
       writer.write("MALFORMED;\n");
       for (var line : parseResult.getUnparsedLines()) {
-        writer.write(line);
+        writer.write(line + '\n');
       }
     } catch (FileAlreadyExistsException x) {
       LOGGER.error("File {} already exists", path);
