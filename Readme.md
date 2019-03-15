@@ -4,6 +4,7 @@
 с помощью `data.sql` и `schema.sql` лежащими в `src/main/resources`.
 
 #### Сборка
+Собирать на java 11.
 Выполнить `./mvnw clean package` в директории с проектом, в результате 
 чего мавен соберет `target/tran-check-0.0.1-SNAPSHOT.jar`.
 
