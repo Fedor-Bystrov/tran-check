@@ -25,7 +25,7 @@ public class CsvTransactionController {
   }
 
   /**
-   * Контроллер, осуществляющий сверку транзакций из файла с транзакциями в базе
+   * Метод, осуществляющий сверку транзакций из файла с транзакциями в базе
    */
   public void checkTransactions() {
     LOGGER.info("Transaction check initialized");

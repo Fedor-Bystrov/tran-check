@@ -22,6 +22,12 @@ public class TransactionRepository {
     this.jdbcTemplate = jdbcTemplate;
   }
 
+  /**
+   * Метод для получения списка транзакций по их id
+   *
+   * @param transactionIds множество id транзакций
+   * @return список транзакций
+   */
   public List<Transaction> getTransactions(Set<Integer> transactionIds) {
     LOGGER.info("Fetching transactions from database");
     return jdbcTemplate.query(

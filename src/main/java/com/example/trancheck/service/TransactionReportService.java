@@ -53,7 +53,7 @@ public class TransactionReportService {
     // 1. Парсим csv файл с транзакциями
     final var parseResult = fileParser.parse(pathToFile);
 
-    // 2. Собираем список id транзакций
+    // 2. Собираем список id транзакций из файла
     final Set<Integer> csvTransactionsIds = parseResult.getParseLineResults()
       .stream()
       .mapToInt(ParseLineResult::getId)
