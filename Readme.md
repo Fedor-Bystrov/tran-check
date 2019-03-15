@@ -16,7 +16,6 @@
 Пример:
 ```
 csvFile=./ptxs.csv
-
 ```
 В нем указать `csvFile=<полный путь до csv с транзакциями>`.
 2. Выполнить `java -jar tran-check-0.0.1-SNAPSHOT.jar`. 
